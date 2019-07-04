@@ -1,28 +1,20 @@
 import React,{Component} from 'react';
 import Header from './Header';
-import './App.css';
+import './ShowSubscriber.css';
 import './common/common.css';
+import {Link} from 'react-router-dom';
 
-class App extends Component{
-    render(){
-        let subscribers = [
-            {
-              id: 1,
-              name: "Shilpa Bhat",
-              phone: "8888888888"
-            },
-            {
-              id: 2,
-              name: "Srishti Gupta",
-              phone: "9999999999"
-            }
-          ];      
+class ShowSubscriber extends Component{
+    onDeleteClicked = (subID)=>{
+        this.props.deleteSubscriberHandler(subID);
+    }
 
+    render(){    
         return (
             <div>
                 <Header headerText="phone directory"/>
                 <div className="component-body-container">
-                    <button className="custom-btn add-btn">Add</button>
+                    <Link to="/add"><button className="custom-btn add-btn">Add</button></Link>
     
                     <div className="grid-container heading-container">
                         <span className="grid-item name-heading">Name</span>
@@ -30,13 +22,13 @@ class App extends Component{
                     </div>
 
                     {
-                        subscribers.map((sub)=>{
+                        this.props.subscriberList.map((sub)=>{
                             return (
                                 <div key = {sub.id} className="grid-container">
                                     <span className="grid-item">{sub.name}</span>
                                     <span className="grid-item">{sub.phone}</span>
                                     <span className="grid-item action-btn-container">
-                                        <button className="custom-btn delete-btn">Delete</button>
+                                        <button className="custom-btn delete-btn" onClick={this.onDeleteClicked.bind(this,sub.id)}>Delete</button>
                                     </span>
                                 </div>
                             );
@@ -49,4 +41,4 @@ class App extends Component{
     }
 }
 
-export default App;
+export default ShowSubscriber;

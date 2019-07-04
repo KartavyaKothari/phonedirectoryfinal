@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import AddSubscriber from './AddSubscriber';
+import PhoneDirectory from './PhoneDirectory';
 
-ReactDOM.render(<AddSubscriber/>,document.querySelector('#root'));
+ReactDOM.render(<PhoneDirectory/>,document.querySelector('#root'));
